@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;
   min-width: 100vw;
   min-height: 100vh;
 `;
@@ -18,7 +19,6 @@ const Weather = () => {
     const fetchWeatherData = useCallback(async () => {
         const key = 'eb5e1ae18e0b41b1a2f202108200209';
         const url = `https://api.weatherapi.com/v1/current.json?q=Poznan&key=${key}`;
-        // const imgSrc = `https://www.weatherbit.io/static/img/icons/${icon}`;
 
         try {
             const response = await fetch(url);
@@ -31,7 +31,6 @@ const Weather = () => {
             });
             console.log(data)
         } catch(error) {
-            console.log(error)
             setError(true);
         }
 
@@ -51,11 +50,11 @@ const Weather = () => {
 
     return (
         <Wrapper>
-            <WeatherElement 
-                title='Temperature' 
-                content={<div>{weatherData.temp} &#8451;</div>}
+            <WeatherElement
+                title='Temperature'
+                content={<p>{weatherData.temp} &#8451;</p>}
             />
-            <WeatherElement 
+            <WeatherElement
                 title='Icon'
                 content={<img alt='weather icon' src={weatherData.iconCode}/>}
             />
